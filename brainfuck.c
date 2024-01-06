@@ -69,6 +69,7 @@ int main(int argc, char **argv) {
 
   char inst;
   while (pc < strlen(program)) {
+    unsigned char *p_memory = memory + pointer;
     inst = *(program + pc);
 
     if (inst == '<') {
@@ -76,19 +77,19 @@ int main(int argc, char **argv) {
     } else if (inst == '>') {
       pointer++;
     } else if (inst == '+') {
-      *(memory + pointer) = (*(memory + pointer) + 1) & 0xff;
+      *p_memory = (*p_memory + 1) & 0xff;
     } else if (inst == '-') {
-      *(memory + pointer) = (*(memory + pointer) - 1) & 0xff;
+      *p_memory = (*p_memory - 1) & 0xff;
     } else if (inst == '[') {
-      if (*(memory + pointer) == 0) {
+      if (*p_memory == 0) {
         pc = *(table + pc);
       }
     } else if (inst == ']') {
-      if (*(memory + pointer) != 0) {
+      if (*p_memory != 0) {
         pc = *(table + pc);
       }
     } else if (inst == '.') {
-      printf("%c", memory[pointer]);
+      printf("%c", *p_memory);
     }
     pc++;
   }
