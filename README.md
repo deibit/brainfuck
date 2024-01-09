@@ -8,7 +8,7 @@ It happens to be a really good way to acquire a shallow grasp of a programming l
 
 It contains const, variables, maps, list, stacks, vector, bit fiddling, if-else-switch, output, file reading, error treatment, usage of standard libraries, etc.
 
-So, implementing a brainfuck interpreter is fun and gives you a quick and basic view of any language you want to learn.
+So, implementing a brainfuck interpreter is fun and gives you a quick and basic overview of any language you want to learn.
 
 ## Implementations
 
