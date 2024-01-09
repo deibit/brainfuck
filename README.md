@@ -20,7 +20,7 @@ Why not?
 
 `go run brainfuck.go <program>`
 
-## Javasscript (Node)
+## Javascript (Node)
 
 `node brainfuck <program>`
 
