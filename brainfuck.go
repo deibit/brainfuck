@@ -7,6 +7,8 @@ import (
 	"slices"
 )
 
+const maxMemory = 30000
+
 func createJumpTable(program []byte) map[int]int {
 
 	top := 0
@@ -37,17 +39,17 @@ func createJumpTable(program []byte) map[int]int {
 func main() {
 	if len(os.Args) < 2 {
 		fmt.Println("Usage: brainfuck <filename>")
-		os.Exit(0)
+		os.Exit(1)
 	}
 
 	program, err := os.ReadFile(os.Args[1])
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("Error: Cannot find or read file: %v", os.Args[1])
 	}
 
 	jumpTable := createJumpTable(program)
 
-	memory := make([]int, 30000)
+	memory := make([]int, maxMemory)
 	pointer := 0
 	pc := 0
 	inst_set := []string{"<", ">", "+", "-", "[", "]", "."}
@@ -81,6 +83,8 @@ func main() {
 			if memory[pointer] != 0 {
 				pc = jumpTable[pc]
 			}
+		default:
+			log.Fatalf("Error: unknown or not implemented instruction %v", instr)
 		}
 
 		pc++
