@@ -22,7 +22,7 @@ Why not?
 
 ## Javascript (Node)
 
-`node brainfuck <program>`
+`node brainfuck.js <program>`
 
 ## Test programs
 
