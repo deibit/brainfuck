@@ -20,6 +20,10 @@ Why not?
 
 `go run brainfuck.go <program>`
 
+## Javasscript (Node)
+
+`node brainfuck <program>`
+
 ## Test programs
 
 See `programs` folder.
