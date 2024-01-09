@@ -34,7 +34,7 @@ Not mine, scraped from the Internets.
 
 Brainfuck is simple.
 
-Memory used to be 30.000 cells with byte size initialized to zero.
+Memory use to be 30.000 cells with byte size initialized to zero.
 
 There is a pointer pointing to one of the cells anytime.
 
