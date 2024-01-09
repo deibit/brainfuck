@@ -16,15 +16,19 @@ Why not?
 
 `./bf <program>`
 
+## Go
+
+`go run brainfuck.go <program>`
+
 ## Test programs
 
-See `programs` folder. 
+See `programs` folder.
 
 Not mine, scraped from the Internets.
 
 ## Some tech notes
 
-Brainfuck is simple. 
+Brainfuck is simple.
 
 Memory used to be 30.000 cells with byte size initialized to zero.
 
