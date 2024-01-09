@@ -1,12 +1,10 @@
 import sys
 
-ins = ["<", ">", ".", "[", "]", "+", ",", "-"]
+MAX_MEM = 30000
 
-program: list[str] = [i for i in open(sys.argv[1]).read() if i in ins]
-memory = [0 for _ in range(30000)]
-pointer = 0
-PC = 0
-
+program: list[str] = [
+    i for i in open(sys.argv[1]).read() if i in ["<", ">", ".", "[", "]", "+", ",", "-"]
+]
 jump = {}
 s: list[int] = []
 for pos, ins in enumerate(program):
@@ -19,12 +17,9 @@ for pos, ins in enumerate(program):
 
 assert len(s) == 0, f"Unbalanced [] check these positions: {s}"
 
-
-def p_debug(max=10):
-    print(
-        f"PC: {PC}\tinst: {program[PC]}\tmem[p]: {memory[pointer]}\tmem[0:10] {memory[0:max]}"
-    )
-
+memory = [0 for _ in range(MAX_MEM)]
+pointer = 0
+PC = 0
 
 while PC < len(program):
     assert (
