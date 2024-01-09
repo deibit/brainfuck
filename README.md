@@ -4,33 +4,49 @@ These are some of mine implementations of the Brainfuck programming language in 
 
 Why?
 
-Why not?
+It happens to be a really good way to adquire a shallow grasp of a programming language, make comparisons.
 
-## Python
+It contains const, variables, maps, list, stacks, vector, bit fiddling, if-else-switch, output, file reading, error treatment, usage of standard libraries, etc.
+
+So, implementing a brainfuck interpreter is fun and gives you a quick and basic view of any language you want to learn.
+
+## Implementations
+
+### Python
 
 `python3 brainfuck.py <program>`
 
-## C
+### C
 
-`cc brainfuck.c -o bf`
+`cc brainfuck.c -o brainfuck`
 
-`./bf <program>`
+`./brainfuck <program>`
 
-## Go
+### C++
+
+`clang++ brainfuck.cpp -o brainfuck`
+
+`./brainfuck <program>`
+
+### Go
 
 `go run brainfuck.go <program>`
 
-## Javascript (Node)
+### Javascript (Node)
 
 `node brainfuck.js <program>`
 
-## Test programs
+### Test programs
+
+---
 
 See `programs` folder.
 
 Not mine, scraped from the Internets.
 
-## Some tech notes
+### Some tech notes
+
+---
 
 Brainfuck is simple.
 
@@ -38,18 +54,18 @@ Memory use to be 30.000 cells with byte size initialized to zero.
 
 There is a pointer pointing to one of the cells anytime.
 
-Canonical Brainfuck programs are limited to these operands: "<>+-,.[]"
+Canonical Brainfuck programs are limited to these operands: `< > + - , . [ ]`
 
-< > moves the pointer along the memory.
+`< >` moves the pointer along the memory.
 
-+- increment, decrements the cell values.
+`+ -` increment, decrements the cell values.
 
-. print the character pointed by pointer.
+`.` print the character pointed by pointer.
 
-, input (not implemented in my interpreters yet)
+`,` input (not implemented in my interpreters yet)
 
-[ if memory[pointer] is zero jump to the matching ] position.
+`[` if memory[pointer] is zero jump to the matching ] position.
 
-] if memory[pointer] is NOT zero return to the matching [ position.
+`]` if memory[pointer] is NOT zero return to the matching [ position.
 
 That's all. There are variants: wrapping memory, extended operants, cell size, etc. Almost all unchallenging.

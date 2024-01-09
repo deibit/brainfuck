@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define STACK_SIZE 100
+#define MAX_MEN 30000
+
 char *read_program(const char *filename) {
   FILE *f;
   size_t size;
@@ -35,7 +38,6 @@ int *create_jump_table(const char *program) {
   size_t size = strlen(program);
   int *table = calloc(size, sizeof(int));
 
-#define STACK_SIZE 100
   int stack[STACK_SIZE] = {0};
   int top = 0;
 
@@ -63,7 +65,7 @@ int main(int argc, char **argv) {
 
   int pointer = 0;
   int pc = 0;
-  unsigned char memory[30000] = {0};
+  unsigned char memory[MAX_MEN] = {0};
 
   int *table = create_jump_table(program);
 
