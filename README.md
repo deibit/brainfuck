@@ -4,7 +4,7 @@ These are some of mine implementations of the Brainfuck programming language in 
 
 Why?
 
-It happens to be a really good way to adquire a shallow grasp of a programming language, make comparisons.
+It happens to be a really good way to acquire a shallow grasp of a programming language, make comparisons.
 
 It contains const, variables, maps, list, stacks, vector, bit fiddling, if-else-switch, output, file reading, error treatment, usage of standard libraries, etc.
 
