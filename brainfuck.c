@@ -82,14 +82,10 @@ int main(int argc, char **argv) {
       *p_memory = (*p_memory + 1) & 0xff;
     } else if (inst == '-') {
       *p_memory = (*p_memory - 1) & 0xff;
-    } else if (inst == '[') {
-      if (*p_memory == 0) {
-        pc = *(table + pc);
-      }
-    } else if (inst == ']') {
-      if (*p_memory != 0) {
-        pc = *(table + pc);
-      }
+    } else if (inst == '[' && *p_memory == 0) {
+      pc = *(table + pc);
+    } else if (inst == ']' && *p_memory != 0) {
+      pc = *(table + pc);
     } else if (inst == '.') {
       printf("%c", *p_memory);
     }
