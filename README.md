@@ -76,8 +76,9 @@ Canonical Brainfuck programs are limited to these operands: `< > + - , . [ ]`
 
 That's all. There are variants: wrapping memory, extended operants, cell size, etc. Almost all unchallenging.
 
-### Some valueable resources
+### Some valuable resources
 
 [https://gist.github.com/roachhd/dce54bec8ba55fb17d3a](https://gist.github.com/roachhd/dce54bec8ba55fb17d3a)
 
 [https://github.com/rdebath/Brainfuck](https://github.com/rdebath/Brainfuck)
+
