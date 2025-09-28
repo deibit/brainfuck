@@ -36,6 +36,12 @@ So, implementing a brainfuck interpreter is fun and gives you a quick and basic 
 
 `node brainfuck.js <program>`
 
+### Rust
+
+`cd brainfuck-rs`
+
+`cargo run`
+
 ### Test programs
 
 ---
