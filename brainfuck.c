@@ -6,7 +6,12 @@
 #define STACK_SIZE 100
 #define MAX_MEN 30000
 
-char *read_program(const char *filename) {
+typedef struct Program {
+  char *data;
+  size_t len;
+} Program;
+
+Program read_program(const char *filename) {
   FILE *f;
   size_t size;
   char *buf;
@@ -31,21 +36,20 @@ char *read_program(const char *filename) {
   fread(buf, 1, size, f);
   buf[size] = '\0';
   fclose(f);
-  return buf;
+  return (Program){.data = buf, .len = size};
 }
 
-int *create_jump_table(const char *program) {
-  size_t size = strlen(program);
-  int *table = calloc(size, sizeof(int));
+int *create_jump_table(const Program program) {
+  int *table = calloc(program.len, sizeof(int));
 
   int stack[STACK_SIZE] = {0};
   int top = 0;
 
-  for (int p = 0; p < size; p++) {
-    if (*(program + p) == '[') {
+  for (int p = 0; p < program.len; p++) {
+    if (*(program.data + p) == '[') {
       assert(top < STACK_SIZE);
       stack[top++] = p;
-    } else if (*(program + p) == ']') {
+    } else if (*(program.data + p) == ']') {
       *(table + p) = stack[--top];
       *(table + stack[top]) = p;
     }
@@ -61,7 +65,7 @@ int main(int argc, char **argv) {
     puts("Usage: brainfuck <program>");
     exit(1);
   }
-  char *program = read_program(argv[1]);
+  Program program = read_program(argv[1]);
 
   int pointer = 0;
   int pc = 0;
@@ -69,10 +73,9 @@ int main(int argc, char **argv) {
 
   int *table = create_jump_table(program);
 
-  char inst;
-  while (pc < strlen(program)) {
+  while (pc < program.len) {
     unsigned char *p_memory = memory + pointer;
-    inst = *(program + pc);
+    char inst = *(program.data + pc);
 
     if (inst == '<') {
       pointer--;
@@ -87,11 +90,13 @@ int main(int argc, char **argv) {
     } else if (inst == ']' && *p_memory != 0) {
       pc = *(table + pc);
     } else if (inst == '.') {
-      printf("%c", *p_memory);
+      putchar(*p_memory);
+    } else if (inst == ',') {
+      *p_memory = getchar();
     }
     pc++;
   }
-  free(program);
+  free(program.data);
   free(table);
   return 0;
 }

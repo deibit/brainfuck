@@ -2,3 +2,4 @@ a.out
 a.out.dSYM
 brainfuck
 .DS_Store
+brainfuck-rs/target
